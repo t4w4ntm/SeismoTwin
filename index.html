@@ -343,39 +343,162 @@
                 height: 20px;
             }
         }
+
+        /* Gallery Section */
+        #gallery {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .gallery-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        .gallery-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 2px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-text {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 
 <body>
-
     <h1 data-text="SEISMOTWIN">SEISMOTWIN</h1>
-
     <div id="game-container">
-
-
-        <!-- Fullscreen Icon Button -->
-        <button id="fullscreen-btn" onclick="toggleFullscreen()" title="Toggle Fullscreen">
-            <svg viewBox="0 0 24 24">
-                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
-            </svg>
-        </button>
-
-        <canvas id="unity-canvas"></canvas>
-
-        <div id="loading-overlay">
-            <div class="signal-loader">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+<button id="fullscreen-btn" onclick="toggleFullscreen()"
+                title="Toggle Fullscreen"><svg viewBox="0 0 24 24">
+                    <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+                </svg></button><canvas id="unity-canvas"></canvas>
+            <div id="loading-overlay">
+                <div class="signal-loader">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="loading-text">SYSTEM INITIALIZING...</div>
             </div>
-            <div class="loading-text">SYSTEM INITIALIZING...</div>
-        </div>
     </div>
-
-    <script>
-        // --- ส่วนที่แก้ไขให้ตรงกับไฟล์ในรูปของคุณ ---
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="gallery-title">Structural Health Monitoring sensors for Skytrain Station</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="img/Screenshot%202026-01-27%20231459.png" alt="Gameplay Screenshot 1">
+                <div class="gallery-overlay">
+                    <span class="gallery-text">6 sensors </span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/Screenshot%202026-01-27%20231536.png" alt="Gameplay Screenshot 2">
+                <div class="gallery-overlay">
+                    <span class="gallery-text">Station Tao Poon</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/Screenshot%202026-01-27%20231541.png" alt="Gameplay Screenshot 3">
+                <div class="gallery-overlay">
+                    <span class="gallery-text">5 sensors </span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/Screenshot%202026-01-27%20231547.png" alt="Gameplay Screenshot 4">
+                <div class="gallery-overlay">
+                    <span class="gallery-text">Station Nonthaburi</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/Screenshot%202026-01-27%20231554.png" alt="Gameplay Screenshot 5">
+                <div class="gallery-overlay">
+                    <span class="gallery-text">Column Type Pier 3 sensors </span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/Screenshot%202026-01-27%20231603.png" alt="Gameplay Screenshot 6">
+                <div class="gallery-overlay">
+                    <span class="gallery-text">Portal Type Pier 4 sensors </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script> // --- ส่วนที่แก้ไขให้ตรงกับไฟล์ในรูปของคุณ ---
 
         // 1. ไฟล์ Loader (ในรูปคุณเป็นตัว B ใหญ่)
         var loaderUrl = "Build/Build.loader.js";
@@ -395,7 +518,9 @@
             companyName: "MyCompany",
             productName: "MyGame",
             productVersion: "1.0",
-        };
+        }
+
+            ;
 
         var container = document.querySelector("#game-container");
         var canvas = document.querySelector("#unity-canvas");
@@ -404,17 +529,22 @@
 
         var script = document.createElement("script");
         script.src = loaderUrl;
+
         script.onload = () => {
             createUnityInstance(canvas, config, (progress) => {
+
                 // ส่วนนี้ใช้แสดง Progress Bar ได้ (ตอนนี้ใช้วงกลมหมุนแทน)
             }).then((unityInstance) => {
                 unityGameInstance = unityInstance;
                 loadingOverlay.style.opacity = "0";
                 setTimeout(() => loadingOverlay.style.display = "none", 500);
+
             }).catch((message) => {
                 alert(message);
             });
-        };
+        }
+
+            ;
         document.body.appendChild(script);
 
         function toggleFullscreen() {
@@ -422,6 +552,7 @@
                 unityGameInstance.SetFullscreen(1);
             }
         }
+
     </script>
 </body>
 
